@@ -1,7 +1,7 @@
 How to install
 
 1. Clone and unzip pacakge to desired directory on remote machine
-2. Setup OPC server IP, PROGID, USER, PASSWORD
+2. Setup OPC server IP, PROGID, USER, PASSWORD in config.properties
 3. Setup taglist
 4. Setup start_data_agent.bat with correct folder path
 5. Double click bat file
