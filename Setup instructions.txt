@@ -1,0 +1,55 @@
+##############################################
+######## ExactSpace Data Agent
+######## OPC Client setup instructions
+##############################################
+
+
+Pre-requisites
+
+1. OPC Server details to be identified:
+ 1.1 OPC Server IP address
+ 1.2 OPC Server User name (Windows admin user)
+ 1.3 OPC Server Password
+ 1.4 OPC Server PROGID
+    1.4.1 Click on START -> Run -> Enter "dcomcnfg.exe"
+	1.4.2 Expand Component Services ->Computers -> My Computer -> DCOM Config
+	1.4.3 Then locate your OPC Server and right click on that you will get all the details of your OPC Server including the PROGID and CLSID
+ 1.5 Ensure DCOM settings are carried out as per instructions from OPC server manual
+ 1.6 Remote DCOM access to be enabled, Windows Firewall may be required to be turned off in case
+ connectivity is not established
+ 
+2. OPC Client machine details:
+ 2.1 User name and password on this machine to be same as OPC server listed above
+ 2.2 User should be given Administrator privileges for proper communication
+ 
+3. OPC Client software installation
+ 3.1 On OPC Client machine, identify an installation location (For example, D:\OPC Client)
+ 3.2 Download software package from link and unzip the OPC Client in that folder
+ 3.3 Install JAVA JDK by double clicking the jdk installable provided
+ 3.4 Setup JAVA_HOME environment variable in Windows:
+   3.4.1 Select Control Panel and then System.
+   3.4.2 Click Advanced and then Environment Variables.
+   3.4.3 Add the location of the bin folder of the JDK installation to the PATH variable in System Variables. (It will typically be a path like C:\Program Files\Java\jdk1.8.0_201\bin)
+   
+4. OPC Client configuration
+
+ 4.1 Go to folder where you unzipped the client software (For example, D:\OPC Client)
+ 
+ 4.2 Edit the config file using notepad
+   4.2.1 Replace OPC_SERVER_USER_NAME with actual user name identified in step 1
+   4.2.2 Replace OPC_SERVER_PASSWORD with actual password identified in step 1
+   4.2.3 Replace OPC_SERVER_IP_ADDRESS with actual IP address identified in step 1
+   4.2.4 Replace OPC_SERVER_PROGID_VALUE with actual PROGID identified in step 1
+   4.2.5 Save and close file
+   
+ 4.3 Edit start_data_agent.bat using notepad
+   4.3.1 Edit the folder location on line 2, with the actual path where you unzipped the client software
+   4.3.2 Save and close
+   
+ 4.4 Edit taglist.txt using notepad
+   4.4.1 For test purposes, write a few known tags which are configured in the OPC server. (This file can later be modified to incluse the full list of tags that need to be read from the OPC Server)
+   
+ 4.5. Launch the client by double clicking on the start_data_agent.bat file
+   4.5.1 On successful connection, you will see log messages getting displayed and values read from the OPC server will be visible
+   4.5.2 If the output appears static and does not change, it indicates connection is unsuccessful. Please investigate DCOM settings as per OPC server manual.
+       
